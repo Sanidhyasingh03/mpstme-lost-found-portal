@@ -1,0 +1,89 @@
+<div class="card">
+    <div style="border-bottom: 2px solid #eee; margin-bottom: 25px; padding-bottom: 10px;">
+        <h2 style="margin-bottom: 5px; color: #8A1538;">Campus Recovery Directory</h2>
+        <p style="color: #666; font-size: 14px;">
+            Browse reported items across the MPSTME premises. For privacy, contact details are managed via a secure WhatsApp bridge.
+        </p>
+    </div>
+    
+    <div style="margin-bottom: 30px;">
+        <input type="text" class="search-bar" ng-model="searchText" 
+               placeholder="🔍 Search for items (e.g. 'Laptop', 'Library', 'ID Card')..." 
+               style="border: 2px solid #8A1538; border-radius: 25px; padding: 12px 25px;">
+    </div>
+    
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 100px; text-align: center;">Item Photo</th>
+                    <th>Specification</th>
+                    <th>Discovery Details</th>
+                    <th>Status</th>
+                    <th style="text-align: center;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in items | filter:searchText">
+                    
+                    <td style="text-align: center; vertical-align: middle;">
+                        <img ng-if="x.image_name" ng-src="uploads/{{x.image_name}}" 
+                             style="width: 70px; height: 70px; object-fit: cover; border-radius: 10px; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                        
+                        <div ng-if="!x.image_name" 
+                             style="width: 70px; height: 70px; background: #f9f9f9; border: 1px dashed #ccc; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #aaa; margin: 0 auto;">
+                            No Image
+                        </div>
+                    </td>
+                    
+                    <td>
+                        <strong style="font-size: 16px; color: #333;">{{ x.item_name }}</strong><br>
+                        <span style="font-size: 11px; background: #fce4ec; color: #8A1538; padding: 2px 8px; border-radius: 12px; font-weight: bold; text-transform: uppercase;">
+                            {{ x.category }}
+                        </span>
+                        <p style="margin-top: 8px; font-size: 13px; color: #666; line-height: 1.4;">{{ x.description }}</p>
+                    </td>
+                    
+                    <td>
+                        <div style="font-weight: 600; color: #444;">📍 {{ x.location }}</div>
+                        <div style="font-size: 12px; color: #888; margin-top: 4px;">📅 {{ x.date | date:'mediumDate' }}</div>
+                    </td>
+                    
+                    <td style="vertical-align: middle;">
+                        <span ng-class="{
+                            'badge-lost': x.status == 'Lost', 
+                            'badge-found': x.status == 'Found', 
+                            'badge-claimed': x.status == 'Claimed'
+                        }">
+                            {{ x.status }}
+                        </span>
+                    </td>
+
+                    <td style="text-align: center; vertical-align: middle;">
+                        <div ng-if="x.status == 'Lost'">
+                            <button ng-click="notifyOwner(x)" 
+                                    style="background: #25D366; color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 8px; width: 140px; margin: 0 auto; box-shadow: 0 4px 6px rgba(37, 211, 102, 0.2);">
+                                💬 Notify Owner
+                            </button>
+                            <p style="font-size: 10px; color: #888; margin-top: 6px;">Secure Social Link</p>
+                        </div>
+
+                        <div ng-if="x.status == 'Found'" style="color: #2e7d32; font-size: 13px; font-weight: 600;">
+                            ✅ Already Found
+                        </div>
+                        <div ng-if="x.status == 'Claimed'" style="color: #999; font-size: 13px; font-style: italic;">
+                            Handed Over
+                        </div>
+                    </td>
+                </tr>
+
+                <tr ng-if="(items | filter:searchText).length === 0">
+                    <td colspan="5" style="text-align: center; padding: 60px; color: #999; font-style: italic; background: #fafafa;">
+                        <div style="font-size: 40px; margin-bottom: 10px;">🔍</div>
+                        No items matching your search were found in the directory.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

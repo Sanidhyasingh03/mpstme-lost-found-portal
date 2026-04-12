@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="LostFoundApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MPSTME | Lost and Found Portal</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+    
+    <script src="js/app.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <h3>SVKM'S NMIMS</h3>
+            <h1>MPSTME Lost and Found Portal</h1>
+            
+            <nav>
+                <a href="#/!">Home</a>
+                <a href="#!/report">Report an Item</a>
+                <a href="#!/view">Browse Directory</a>
+                <a href="#!/login" class="admin-link">Administration</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div ng-view class="view-animate"></div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 SVKM's NMIMS MPSTME | Internal Campus Utility</p>
+            <p style="font-size: 13px; margin-top: 8px; color: #cccccc;">
+                Engineered by <strong>Sanidhya and Saransh</strong> | Developed for Web Programming Course
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Optional: Close mobile menu if you decide to add one later
+        console.log("MPSTME Lost and Found Portal Initialized.");
+    </script>
+
+</body>
+</html>

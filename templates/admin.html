@@ -1,0 +1,28 @@
+<div class="card">
+    <h2>Admin Dashboard - Manage Records</h2>
+    <p>Full control over database entries (Update/Delete).</p>
+    
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Item</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in items">
+                    <td>{{ x.id }}</td>
+                    <td>{{ x.item_name }}</td>
+                    <td><b>{{ x.status }}</b></td>
+                    <td>
+                        <button class="btn-success" ng-click="markClaimed(x)" ng-if="x.status != 'Claimed'">Mark Claimed</button>
+                        <button class="btn-danger" ng-click="deleteItem(x.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
