@@ -67,7 +67,7 @@ The system relies on a structured MySQL table with the following attributes:
 ---
 
 ## 👤 Developer Information
-**Sanidhya and Saransh** *Computer Engineering Student* **MPSTME, SVKM's NMIMS**
+**Sanidhya Singh Sisodiya** *Computer Engineering Student* **MPSTME, SVKM's NMIMS**
 
 ---
 *"Engineered with precision to turn lost belongings into found memories across the MPSTME campus."*
